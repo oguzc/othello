@@ -1,0 +1,5 @@
+C:\Projects\AI\Othello\Othello\Othello\bin\Debug\Othello.dll
+C:\Projects\AI\Othello\Othello\Othello\bin\Debug\Othello.pdb
+C:\Projects\AI\Othello\Othello\Othello\obj\Debug\Othello.dll
+C:\Projects\AI\Othello\Othello\Othello\obj\Debug\Othello.pdb
+C:\Projects\AI\Othello\Othello\Othello\obj\Debug\Othello.csprojResolveAssemblyReference.cache
