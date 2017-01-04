@@ -12,15 +12,17 @@ namespace GameUserInterface
 {
     public partial class GameBoardForm : Form
     {
+        private readonly StartForm _startForm;
         private readonly Difficulty _difficulty;
         private const int ImageSize = 100;
         private Game _game;
         private int[][] _availableMoves;
         private Color _turn = Color.Black;
 
-        public GameBoardForm(Difficulty difficulty = Difficulty.Beginner)
+        public GameBoardForm(StartForm startForm, Difficulty difficulty = Difficulty.Beginner)
         {
             InitializeComponent();
+            _startForm = startForm;
             _difficulty = difficulty;
         }
 
@@ -114,7 +116,7 @@ namespace GameUserInterface
 
                 var point = player.Play(game);
                 _game.Board.MakeTheMove(player, point);
-                Thread.Sleep((int)_difficulty * 100);
+                Thread.Sleep(100/(int) _difficulty);
                 UpdateGameArena(_game.Board.GetState());
                 return;
             }
@@ -153,6 +155,8 @@ namespace GameUserInterface
         {
             var pictureBox = sender as PictureBox;
 
+            if (pictureBox == null) return;
+
             var ints = pictureBox.Name.Split('_').Select(int.Parse).ToList();
 
             for (var i = 0; i < _availableMoves.Count(); i++)
@@ -167,6 +171,8 @@ namespace GameUserInterface
         private void PictureBoxOnMouseLeave(object sender, EventArgs eventArgs)
         {
             var pictureBox = sender as PictureBox;
+
+            if (pictureBox == null) return;
 
             var ints = pictureBox.Name.Split('_').Select(int.Parse).ToList();
 
@@ -183,6 +189,8 @@ namespace GameUserInterface
         {
             var pictureBox = sender as PictureBox;
 
+            if (pictureBox == null) return;
+
             var ints = pictureBox.Name.Split('_').Select(int.Parse).ToList();
 
             for (var i = 0; i < _availableMoves.Count(); i++)
@@ -196,6 +204,11 @@ namespace GameUserInterface
 
                 break;
             }
+        }
+
+        private void GameBoardForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _startForm.Close();
         }
     }
 }

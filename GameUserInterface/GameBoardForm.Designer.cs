@@ -52,6 +52,7 @@
             this.Name = "GameBoardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Othello Game";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameBoardForm_FormClosed);
             this.Load += new System.EventHandler(this.GameBoardForm_Load);
             this.ResumeLayout(false);
 
