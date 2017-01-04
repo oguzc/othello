@@ -13,23 +13,25 @@ namespace GameUserInterface
     public partial class GameBoardForm : Form
     {
         private readonly StartForm _startForm;
+        private readonly GameType _gameType;
         private readonly Difficulty _difficulty;
         private const int ImageSize = 100;
         private Game _game;
         private int[][] _availableMoves;
         private Color _turn = Color.Black;
 
-        public GameBoardForm(StartForm startForm, Difficulty difficulty = Difficulty.Beginner)
+        public GameBoardForm(StartForm startForm, GameType gameType, Difficulty difficulty)
         {
             InitializeComponent();
             _startForm = startForm;
+            _gameType = gameType;
             _difficulty = difficulty;
         }
 
         private void GameBoardForm_Load(object sender, EventArgs e)
         {
             _game = new Game();
-            _game.Start((int)GameType.OnlyComputer, _difficulty);
+            _game.Start((int)_gameType, _difficulty);
             CreateGameArena(_game.Board.GetState());
         }
 
@@ -218,6 +220,7 @@ namespace GameUserInterface
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Enabled = false;
+            _startForm.Show();
         }
     }
 }

@@ -8,10 +8,30 @@ namespace GameUserInterface
 {
     public partial class StartForm : Form
     {
+        private GameBoardForm gameBoardForm;
+
         public StartForm()
         {
             InitializeComponent();
+            FillGameTypeComboBox();
             FillDifficultyComboBox();
+        }
+
+        private void FillGameTypeComboBox()
+        {
+            var dataSource =
+                (from object value in Enum.GetValues(typeof(GameType))
+                    select ((GameType) value)
+                    into gameType
+                    select new ComboBoxItem
+                    {
+                        Name = gameType.ToString(),
+                        Value = (int) gameType
+                    }).ToList();
+
+            cbGameType.DataSource = dataSource;
+            cbGameType.DisplayMember = "Name";
+            cbGameType.ValueMember = "Value";
         }
 
         private void FillDifficultyComboBox()
@@ -20,7 +40,7 @@ namespace GameUserInterface
                 (from object value in Enum.GetValues(typeof(Difficulty))
                     select ((Difficulty) value)
                     into difficulty
-                    select new DifficultyComboItem
+                    select new ComboBoxItem
                     {
                         Name = difficulty.ToString(),
                         Value = (int) difficulty
@@ -33,12 +53,27 @@ namespace GameUserInterface
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            var gameBoardForm = new GameBoardForm(this, (Difficulty) int.Parse(cbDifficulty.SelectedValue.ToString()));
+            gameBoardForm?.Dispose();
+            gameBoardForm =
+                new GameBoardForm(
+                    this,
+                    (GameType)int.Parse(cbGameType.SelectedValue.ToString()),
+                    (Difficulty) int.Parse(cbDifficulty.SelectedValue.ToString()));
             gameBoardForm.Show();
             Hide();
         }
 
         private void cbDifficulty_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            DrawComboBox(sender, e);
+        }
+
+        private void cbGameType_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            DrawComboBox(sender, e);
+        }
+
+        private static void DrawComboBox(object sender, DrawItemEventArgs e)
         {
             // By using Sender, one method could handle multiple ComboBoxes
             var cbx = sender as ComboBox;
@@ -64,7 +99,7 @@ namespace GameUserInterface
                 brush = SystemBrushes.HighlightText;
 
             // Draw the string
-            e.Graphics.DrawString(((DifficultyComboItem) cbx.Items[e.Index]).Name, cbx.Font, brush, e.Bounds, sf);
+            e.Graphics.DrawString(((ComboBoxItem)cbx.Items[e.Index]).Name, cbx.Font, brush, e.Bounds, sf);
         }
     }
 }

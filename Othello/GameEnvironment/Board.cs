@@ -129,10 +129,8 @@ namespace Othello.GameEnvironment
 
         private void Seek(int[] piece, Color color, int[] factorXY, int[][] piecesToBeConverted)
         {
-            var startPointX = piece[0] + factorXY[0];
-            var startPointY = piece[1] + factorXY[1];
             var tempPiecesToBeConverted = new int[GlobalVariables.TotalCellCount][];
-            for (var i = 1; i < GlobalVariables.BoardSize - Helper.Helper.GetMin(startPointX, startPointY); i++)
+            for (var i = 1; i <= GlobalVariables.BoardSize; i++)
             {
                 var newX = piece[0] + (factorXY[0]*i);
                 if (newX.IsOutOfBorder())
@@ -142,6 +140,9 @@ namespace Othello.GameEnvironment
                     break;
 
                 var state = _states[newX, newY];
+
+                if (state.SeeColor() == Color.Empty && (i == 1 || tempPiecesToBeConverted.HasAvailableMoves())) break;
+
                 if (state.SeeColor() == color.GetOpponentColor() && !piecesToBeConverted.ContainsSamePoint(newX, newY))
                 {
                     tempPiecesToBeConverted[tempPiecesToBeConverted.Count()] = new[] {newX, newY};

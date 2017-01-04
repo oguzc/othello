@@ -31,6 +31,7 @@
             this.cbDifficulty = new System.Windows.Forms.ComboBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.cbGameType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cbDifficulty
@@ -40,7 +41,7 @@
             this.cbDifficulty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDifficulty.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cbDifficulty.FormattingEnabled = true;
-            this.cbDifficulty.Location = new System.Drawing.Point(0, 134);
+            this.cbDifficulty.Location = new System.Drawing.Point(0, 168);
             this.cbDifficulty.Name = "cbDifficulty";
             this.cbDifficulty.Size = new System.Drawing.Size(354, 39);
             this.cbDifficulty.TabIndex = 0;
@@ -51,7 +52,7 @@
             this.btnStart.BackColor = System.Drawing.Color.Transparent;
             this.btnStart.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnStart.Location = new System.Drawing.Point(0, 173);
+            this.btnStart.Location = new System.Drawing.Point(0, 207);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(354, 58);
             this.btnStart.TabIndex = 1;
@@ -72,12 +73,26 @@
             this.lblTitle.Text = "Othello";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // cbGameType
+            // 
+            this.cbGameType.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cbGameType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbGameType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGameType.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cbGameType.FormattingEnabled = true;
+            this.cbGameType.Location = new System.Drawing.Point(0, 129);
+            this.cbGameType.Name = "cbGameType";
+            this.cbGameType.Size = new System.Drawing.Size(354, 39);
+            this.cbGameType.TabIndex = 3;
+            this.cbGameType.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbGameType_DrawItem);
+            // 
             // StartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GameUserInterface.Properties.Resources.gameboard_background;
-            this.ClientSize = new System.Drawing.Size(354, 231);
+            this.ClientSize = new System.Drawing.Size(354, 265);
+            this.Controls.Add(this.cbGameType);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.cbDifficulty);
             this.Controls.Add(this.btnStart);
@@ -94,5 +109,6 @@
         private System.Windows.Forms.ComboBox cbDifficulty;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ComboBox cbGameType;
     }
 }

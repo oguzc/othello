@@ -160,10 +160,8 @@ namespace Othello.GameEnvironment
 
         private void Seek(Piece[,] states, int[] piece, int[] factorXY, List<Piece[,]> visitedStates = null)
         {
-            var startPointX = piece[0] + factorXY[0];
-            var startPointY = piece[1] + factorXY[1];
             var counter = 0;
-            for (var i = 1; i <= GlobalVariables.BoardSize - Helper.Helper.GetMin(startPointX, startPointY); i++)
+            for (var i = 1; i <= GlobalVariables.BoardSize; i++)
             {
                 var newX = piece[0] + (factorXY[0]*i);
                 if (newX.IsOutOfBorder())
@@ -174,7 +172,7 @@ namespace Othello.GameEnvironment
 
                 var state = states[newX, newY];
 
-                if (state.SeeColor() == _playerColor)
+                if (state.SeeColor() == _playerColor || (i == 1 && state.SeeColor() == Color.Empty))
                     break;
 
                 if (state.SeeColor() == OpponentType)
