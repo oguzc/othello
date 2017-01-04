@@ -88,11 +88,7 @@ namespace GameUserInterface
                 }
             }
 
-            var gameBasicInfo = _game.GetBasicInfo();
-            lblScoreForPlayer1.Text = gameBasicInfo.PieceCountBlack.ToString();
-            lblScoreForPlayer2.Text = gameBasicInfo.PieceCountWhite.ToString();
-            UpdateElementImmediately(lblScoreForPlayer1);
-            UpdateElementImmediately(lblScoreForPlayer2);
+            UpdateScoreBoard();
 
             _turn = _turn.GetOpponentColor();
             _availableMoves = _game.PlayerByColor(_turn).GetAvailableMoves(_game.Board.GetState());
@@ -105,7 +101,10 @@ namespace GameUserInterface
             if (_availableMoves.HasAvailableMoves())
             {
                 var player = _game.PlayerByColor(_turn);
-                if (_game.PlayerByColor(_turn).SeePlayerType() == PlayerType.Human) return;
+
+                var isHuman = _game.PlayerByColor(_turn).SeePlayerType() == PlayerType.Human;
+                UpdateTurnInfo(_turn, isHuman);
+                if (isHuman) return;
 
                 var game =
                     new Game(
@@ -128,6 +127,23 @@ namespace GameUserInterface
 
             var resultForm = new ResultForm(_game);
             resultForm.Show();
+        }
+
+        private void UpdateScoreBoard()
+        {
+            var gameBasicInfo = _game.GetBasicInfo();
+            lblScoreForPlayer1.Text = gameBasicInfo.PieceCountBlack.ToString();
+            lblScoreForPlayer2.Text = gameBasicInfo.PieceCountWhite.ToString();
+            
+            UpdateElementImmediately(lblScoreForPlayer1);
+            UpdateElementImmediately(lblScoreForPlayer2);
+        }
+
+        private void UpdateTurnInfo(Color turn, bool isHuman)
+        {
+            lblTurnInfo.Text = isHuman ? "Your\nturn" : $"{turn.GetName()}'s\nturn";
+            
+            UpdateElementImmediately(lblTurnInfo);
         }
 
         private static void UpdateElementImmediately(Control control)

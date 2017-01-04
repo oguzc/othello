@@ -65,7 +65,7 @@ namespace Othello.Helper
 
         public static string GetName(this Color color)
         {
-            return color == Color.Black ? "Siyah" : color == Color.White ? "Beyaz" : "";
+            return color == Color.Black ? "Black" : color == Color.White ? "White" : "";
         }
 
         public static Color GetColor(this GameResult gameResult)

@@ -71,22 +71,22 @@
             // 
             this.lblGamerWhite.AutoSize = true;
             this.lblGamerWhite.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblGamerWhite.Location = new System.Drawing.Point(583, 127);
+            this.lblGamerWhite.Location = new System.Drawing.Point(568, 163);
             this.lblGamerWhite.Name = "lblGamerWhite";
-            this.lblGamerWhite.Size = new System.Drawing.Size(134, 78);
+            this.lblGamerWhite.Size = new System.Drawing.Size(100, 38);
             this.lblGamerWhite.TabIndex = 6;
-            this.lblGamerWhite.Text = "Beyaz\r\nOyuncu";
+            this.lblGamerWhite.Text = "White";
             this.lblGamerWhite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblGamerBlack
             // 
             this.lblGamerBlack.AutoSize = true;
             this.lblGamerBlack.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblGamerBlack.Location = new System.Drawing.Point(42, 127);
+            this.lblGamerBlack.Location = new System.Drawing.Point(95, 163);
             this.lblGamerBlack.Name = "lblGamerBlack";
-            this.lblGamerBlack.Size = new System.Drawing.Size(134, 78);
+            this.lblGamerBlack.Size = new System.Drawing.Size(98, 38);
             this.lblGamerBlack.TabIndex = 1;
-            this.lblGamerBlack.Text = "Siyah\r\nOyuncu";
+            this.lblGamerBlack.Text = "Black";
             this.lblGamerBlack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblScoreBlack
@@ -104,11 +104,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(757, 266);
+            this.Controls.Add(this.lblGamerBlack);
             this.Controls.Add(this.lblGamerWhite);
             this.Controls.Add(this.lblDash);
             this.Controls.Add(this.lblScoreWhite);
             this.Controls.Add(this.lblScoreBlack);
-            this.Controls.Add(this.lblGamerBlack);
             this.Controls.Add(this.lblResult);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

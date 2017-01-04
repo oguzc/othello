@@ -29,14 +29,14 @@ namespace GameUserInterface
                     BackColor = System.Drawing.Color.ForestGreen;
                     ForeColor = System.Drawing.Color.White;
                     ChangeColorOfLabels(System.Drawing.Color.White);
-                    lblResult.Text = $"Tebrikler {player.SeePlayerColor().GetName()} oyuncu, kazandınız!";
+                    lblResult.Text = $"Congratulations, {player.SeePlayerColor().GetName()} You Just Won The Game!";
                 }
             }
 
             if (gameOver.GameResult == GameResult.Even)
             {
                 BackColor = System.Drawing.Color.DarkBlue;
-                lblResult.Text = "Oyun Berabere!";
+                lblResult.Text = "Draw!";
             }
             else
             {
@@ -52,7 +52,7 @@ namespace GameUserInterface
                     ForeColor = System.Drawing.Color.Black;
                     ChangeColorOfLabels(System.Drawing.Color.Black);
                 }
-                lblResult.Text = $"{gameOver.GameResult.GetColor().GetName()} oyuncu kazandı!";
+                lblResult.Text = $"{gameOver.GameResult.GetColor().GetName()} Player Won The Game!";
             }
 
             lblScoreBlack.Text = gameOver.PieceCountBlack.ToString();
