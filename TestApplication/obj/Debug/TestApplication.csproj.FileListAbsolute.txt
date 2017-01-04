@@ -1,8 +1,0 @@
-C:\Projects\AI\Othello\Othello\TestApplication\bin\Debug\TestApplication.exe.config
-C:\Projects\AI\Othello\Othello\TestApplication\bin\Debug\TestApplication.exe
-C:\Projects\AI\Othello\Othello\TestApplication\bin\Debug\TestApplication.pdb
-C:\Projects\AI\Othello\Othello\TestApplication\bin\Debug\Othello.dll
-C:\Projects\AI\Othello\Othello\TestApplication\bin\Debug\Othello.pdb
-C:\Projects\AI\Othello\Othello\TestApplication\obj\Debug\TestApplication.csprojResolveAssemblyReference.cache
-C:\Projects\AI\Othello\Othello\TestApplication\obj\Debug\TestApplication.exe
-C:\Projects\AI\Othello\Othello\TestApplication\obj\Debug\TestApplication.pdb
