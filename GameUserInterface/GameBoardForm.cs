@@ -83,10 +83,7 @@ namespace GameUserInterface
                     pictureBox?.Invoke((MethodInvoker)(() =>
                     {
                         pictureBox.Image = new Bitmap(GetImage(_game.Board.GetState()[i, j].SeeColor()));
-                        pictureBox.Invalidate();
-                        pictureBox.Update();
-                        pictureBox.Refresh();
-                        Application.DoEvents();
+                        UpdateElementImmediately(pictureBox);
                     }));
                 }
             }
@@ -94,6 +91,8 @@ namespace GameUserInterface
             var gameBasicInfo = _game.GetBasicInfo();
             lblScoreForPlayer1.Text = gameBasicInfo.PieceCountBlack.ToString();
             lblScoreForPlayer2.Text = gameBasicInfo.PieceCountWhite.ToString();
+            UpdateElementImmediately(lblScoreForPlayer1);
+            UpdateElementImmediately(lblScoreForPlayer2);
 
             _turn = _turn.GetOpponentColor();
             _availableMoves = _game.PlayerByColor(_turn).GetAvailableMoves(_game.Board.GetState());
@@ -129,6 +128,14 @@ namespace GameUserInterface
 
             var resultForm = new ResultForm(_game);
             resultForm.Show();
+        }
+
+        private static void UpdateElementImmediately(Control control)
+        {
+            control.Invalidate();
+            control.Update();
+            control.Refresh();
+            Application.DoEvents();
         }
 
         private static Bitmap GetImage(Color color)
