@@ -89,6 +89,10 @@ namespace GameUserInterface
                 }
             }
 
+            var gameBasicInfo = _game.GetBasicInfo();
+            lblScoreForPlayer1.Text = gameBasicInfo.PieceCountBlack.ToString();
+            lblScoreForPlayer2.Text = gameBasicInfo.PieceCountWhite.ToString();
+
             _turn = _turn.GetOpponentColor();
             _availableMoves = _game.PlayerByColor(_turn).GetAvailableMoves(_game.Board.GetState());
             if (_availableMoves.HasNoAvailableMove())
@@ -209,6 +213,11 @@ namespace GameUserInterface
         private void GameBoardForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _startForm.Close();
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            Enabled = false;
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Othello.GameEnvironment
         void Start(int playerCount, Difficulty difficulty = Difficulty.Beginner);
         Player PlayerByColor(Color color);
         GameInfo GameOver();
+        GameBasicInfo GetBasicInfo();
     }
 
     public class Game : IGame
@@ -63,6 +64,18 @@ namespace Othello.GameEnvironment
                     GameResult = GameResult.NotFinished
                 };
 
+            var gameInfo = new GameInfo(GetBasicInfo());
+
+            gameInfo.GameResult =
+                gameInfo.PieceCountBlack > gameInfo.PieceCountWhite
+                    ? GameResult.Player1
+                    : gameInfo.PieceCountWhite > gameInfo.PieceCountBlack ? GameResult.Player2 : GameResult.Even;
+
+            return gameInfo;
+        }
+
+        public GameBasicInfo GetBasicInfo()
+        {
             var pieces = Board.GetState();
             int player1 = 0, player2 = 0;
             for (var i = 0; i < pieces.GetLength(0); i++)
@@ -81,12 +94,8 @@ namespace Othello.GameEnvironment
                 }
             }
 
-            return new GameInfo
+            return new GameBasicInfo
             {
-                GameResult =
-                    player1 > player2
-                        ? GameResult.Player1
-                        : player2 > player1 ? GameResult.Player2 : GameResult.Even,
                 PieceCountBlack = player1,
                 PieceCountWhite = player2
             };

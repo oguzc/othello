@@ -1,9 +1,19 @@
 ﻿namespace Othello.Model
 {
-    public class GameInfo
+    public class GameInfo : GameBasicInfo
     {
         public GameResult GameResult { get; set; }
-        public int PieceCountBlack { get; set; }
-        public int PieceCountWhite { get; set; }
+
+        public GameInfo()
+        {
+            
+        }
+
+        public GameInfo(GameBasicInfo gameBasicInfo)
+        {
+            PieceCountBlack = gameBasicInfo.PieceCountBlack;
+            PieceCountWhite = gameBasicInfo.PieceCountWhite;
+
+        }
     }
 }
