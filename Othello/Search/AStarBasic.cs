@@ -40,10 +40,8 @@ namespace Othello.Search
                     NodesExpanded++;
                     //AddToVisitedStates(current.Game.Board.GetState());
                     var gameOver = current.Game.GameOver();
-                    if (gameOver.Color == _color)
+                    if (gameOver.GameResult != GameResult.NotFinished)
                         return GetParentPoint(current);
-                    if (gameOver.Color == _color.GetOpponentColor())
-                        return new[] {-1};
                 }
 
                 foreach (var childNode in

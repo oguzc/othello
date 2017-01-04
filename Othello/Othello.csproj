@@ -48,6 +48,7 @@
     <Compile Include="Model\GameInfo.cs" />
     <Compile Include="Model\GameState.cs" />
     <Compile Include="Model\Difficulty.cs" />
+    <Compile Include="Model\GameResult.cs" />
     <Compile Include="Model\GameType.cs" />
     <Compile Include="Model\PlayerType.cs" />
     <Compile Include="Model\Color.cs" />

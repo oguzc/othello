@@ -33,15 +33,8 @@ namespace Othello.Helper
 
         public static int GetDiffWith(this int[] point, int[] otherPoint)
         {
-            return (point[0].ConvertNumber() - otherPoint[0].ConvertNumber()) + (point[1].ConvertNumber() - otherPoint[1].ConvertNumber());
-        }
-
-        private static int ConvertNumber(this int number)
-        {
-            if (number > GlobalVariables.BoardSize/2)
-                number = Math.Abs(number - GlobalVariables.BoardSize);
-
-            return number;
+            return (point[0].ConvertNumber() - otherPoint[0].ConvertNumber()) +
+                   (point[1].ConvertNumber() - otherPoint[1].ConvertNumber());
         }
 
         public static bool ContainsSamePoint(this int[][] arr, int x, int y)
@@ -74,5 +67,25 @@ namespace Othello.Helper
         {
             return color == Color.Black ? "Siyah" : color == Color.White ? "Beyaz" : "";
         }
+
+        public static Color GetColor(this GameResult gameResult)
+        {
+            return
+                gameResult == GameResult.Player1
+                    ? Color.Black
+                    : gameResult == GameResult.Player2 ? Color.White : Color.Empty;
+        }
+
+        #region private functions
+
+        private static int ConvertNumber(this int number)
+        {
+            if (number > GlobalVariables.BoardSize/2)
+                number = Math.Abs(number - GlobalVariables.BoardSize);
+
+            return number;
+        }
+
+        #endregion
     }
 }

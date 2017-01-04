@@ -28,7 +28,7 @@ namespace Othello.Search
 
             Node current = null;
             var counter = 0;
-            while (_searchQueue.Count != 0 && (current == null || (_depth > 0 && current.Depth < _depth)))
+            while (_searchQueue.Count != 0 && (current == null || (_depth > 0 && current.Depth <= _depth)))
             {
                 current = _searchQueue.Dequeue();
 
@@ -40,9 +40,9 @@ namespace Othello.Search
                     NodesExpanded++;
 
                     var gameOver = current.Game.GameOver();
-                    if (gameOver.Color == _color)
+                    if (gameOver.GameResult.GetColor() == _color)
                         return GetParentPoint(current);
-                    if (gameOver.Color == _color.GetOpponentColor())
+                    if (gameOver.GameResult.GetColor() == _color.GetOpponentColor())
                         return new[] {-1};
                 }
 
@@ -62,6 +62,11 @@ namespace Othello.Search
                     var makeSearch = aStar.MakeSearch();
 
                     current.Game.Board.MakeTheMove(current.Game.PlayerByColor(_color.GetOpponentColor()), makeSearch);
+                }
+
+                if (current.Depth == _depth)
+                {
+                    return GetParentPoint(current);
                 }
 
                 foreach (var childNode in

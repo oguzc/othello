@@ -163,7 +163,7 @@ namespace Othello.GameEnvironment
             var startPointX = piece[0] + factorXY[0];
             var startPointY = piece[1] + factorXY[1];
             var counter = 0;
-            for (var i = 1; i < GlobalVariables.BoardSize - Helper.Helper.GetMin(startPointX, startPointY); i++)
+            for (var i = 1; i <= GlobalVariables.BoardSize - Helper.Helper.GetMin(startPointX, startPointY); i++)
             {
                 var newX = piece[0] + (factorXY[0]*i);
                 if (newX.IsOutOfBorder())

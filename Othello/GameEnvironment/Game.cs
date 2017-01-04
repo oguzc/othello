@@ -60,7 +60,7 @@ namespace Othello.GameEnvironment
             if (Player1.HasAnyAvaliableMove(Board.GetState()) || Player2.HasAnyAvaliableMove(Board.GetState()))
                 return new GameInfo
                 {
-                    Color = Color.Empty
+                    GameResult = GameResult.NotFinished
                 };
 
             var pieces = Board.GetState();
@@ -83,10 +83,10 @@ namespace Othello.GameEnvironment
 
             return new GameInfo
             {
-                Color =
+                GameResult =
                     player1 > player2
-                        ? Player1.SeePlayerColor()
-                        : player2 > player1 ? Player2.SeePlayerColor() : Color.Empty,
+                        ? GameResult.Player1
+                        : player2 > player1 ? GameResult.Player2 : GameResult.Even,
                 PieceCountBlack = player1,
                 PieceCountWhite = player2
             };

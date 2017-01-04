@@ -20,9 +20,9 @@ namespace GameUserInterface
         {
             var gameOver = _game.GameOver();
 
-            if (gameOver.Color != Color.Empty)
+            if (gameOver.GameResult == GameResult.Player1 || gameOver.GameResult == GameResult.Player2)
             {
-                var player = _game.PlayerByColor(gameOver.Color);
+                var player = _game.PlayerByColor(gameOver.GameResult.GetColor());
 
                 if (player.SeePlayerType() == PlayerType.Human)
                 {
@@ -33,26 +33,26 @@ namespace GameUserInterface
                 }
             }
 
-            if (gameOver.Color == Color.Empty)
+            if (gameOver.GameResult == GameResult.Even)
             {
                 BackColor = System.Drawing.Color.DarkBlue;
                 lblResult.Text = "Oyun Berabere!";
             }
             else
             {
-                if (gameOver.Color == Color.Black)
+                if (gameOver.GameResult == GameResult.Player1)
                 {
                     BackColor = System.Drawing.Color.Black;
                     ForeColor = System.Drawing.Color.White;
                     ChangeColorOfLabels(System.Drawing.Color.White);
                 }
-                else if (gameOver.Color == Color.White)
+                else if (gameOver.GameResult == GameResult.Player2)
                 {
                     BackColor = System.Drawing.Color.White;
                     ForeColor = System.Drawing.Color.Black;
                     ChangeColorOfLabels(System.Drawing.Color.Black);
                 }
-                lblResult.Text = $"{gameOver.Color.GetName()} oyuncu kazandı!";
+                lblResult.Text = $"{gameOver.GameResult.GetColor().GetName()} oyuncu kazandı!";
             }
 
             lblScoreBlack.Text = gameOver.PieceCountBlack.ToString();

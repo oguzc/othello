@@ -1,12 +1,11 @@
-﻿using System.Linq;
-using Othello.Helper;
+﻿using Othello.Helper;
 using Othello.Model;
 
 namespace Othello.GameEnvironment
 {
     public interface IBoard
     {
-        void MakeTheMove(Player player, int[] point);
+        bool MakeTheMove(Player player, int[] point);
         Piece[,] GetState();
         Piece[,] GetFinalStateForPlayer(Color color);
     }
@@ -42,8 +41,10 @@ namespace Othello.GameEnvironment
             }
         }
 
-        public void MakeTheMove(Player player, int[] point)
+        public bool MakeTheMove(Player player, int[] point)
         {
+            if(point[0] < 0) return false;
+
             _states[point[0], point[1]] = new Piece(player.SeePlayerColor());
 
             var piecesToBeConverted = new int[GlobalVariables.TotalCellCount][];
@@ -62,6 +63,8 @@ namespace Othello.GameEnvironment
             {
                 _states[piecesToBeConverted[i][0], piecesToBeConverted[i][1]].ReverseColor();
             }
+
+            return true;
         }
 
         public Piece[,] GetState()
