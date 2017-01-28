@@ -6,7 +6,13 @@ The popularity of [Riversi](https://en.wikipedia.org/wiki/Reversi) which is anot
 These 4 positions on the board are often seen as the essential aim of the game. Once a player is in possession of the corner pieces their pieces are static and control of the board belongs to them. This is true to a certain degree, certainly if two opposite corner pieces are taken at the right time in such a way that all the edge pieces in between also become static then a very strong advantage is gained. [2]
 
 The complexity of possible moves toward the final solution in this game is great. Finding a path goal state from initial state might take great time for an average computer. In order to be able to find a solution to Othello game and determine the best move for the agent I am going to use a search strategy namely [A* Search Algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm) ([heuristic](https://en.wikipedia.org/wiki/Heuristic_(computer_science))). A* is an informed search strategy or heuristic search strategy which can use some information to determine its way through goal state. [3]
-     
+
+## Screenshots
+![Game Type Selection](/screenshots/1.jpg?raw=true "Game Type Selection")
+![Difficulty Selection](/screenshots/2.jpg?raw=true "Difficulty Selection")
+![Game Board](/screenshots/3.jpg?raw=true "Game Board")
+![Final Screen](/screenshots/4.jpg?raw=true "Final Screen")
+
 ## Authors
 [**Oğuz Ceylan**](https://github.com/oguzc)
 
